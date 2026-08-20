@@ -5,7 +5,7 @@ class Solution(object):
         :rtype: int
         """
         
-        n = len(nums)
+        '''n = len(nums)
         suffix = [0] * n
         prefix = [0] * n
 
@@ -17,4 +17,13 @@ class Solution(object):
             if(prefix[i]==suffix[i]):
                 return i
         return -1
-
+        '''
+        total = sum(nums)
+        left = 0
+        for i in range(len(nums)):
+            
+            right = total - nums[i] - left
+            if(left == right):
+                return i
+            left += nums[i]
+        return -1
