@@ -13,6 +13,50 @@ class Solution(object):
         if not head or not head.next or k == 0:
             return head
 
+        length = 0
+        curr = head
+        last = head
+
+        # Find last node
+        while last.next:
+            last = last.next
+
+        # Find length
+        while curr:
+            length += 1
+            curr = curr.next
+
+        # Handle k > length
+        k = k % length
+
+        if k == 0:
+            return head
+
+        # Find node where we break
+        break_pos = 1
+        curr = head
+
+        while break_pos < length - k:
+            curr = curr.next
+            break_pos += 1
+
+        # Save new head
+        new_head = curr.next
+
+        # Break the list
+        curr.next = None
+
+        # Connect old last to old head
+        last.next = head
+
+        return new_head
+
+
+
+
+        '''if not head or not head.next or k == 0:
+            return head
+
         # Find length
         n = 1
         curr = head
@@ -46,5 +90,5 @@ class Solution(object):
         tail.next = head
 
         return new_head
-            
+        '''
 
