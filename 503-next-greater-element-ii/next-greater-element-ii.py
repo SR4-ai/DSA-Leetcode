@@ -4,7 +4,7 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[int]
         """
-        n = len(nums)
+        '''n = len(nums)
         nums = nums * 2
         result = []
 
@@ -19,5 +19,21 @@ class Solution(object):
 
             if not found:
                 result.append(-1)
+
+        return result
+        '''
+        n = len(nums)
+        result = [-1] * n
+        stack = []
+
+        for i in range(2 * n):
+
+            index = i % n
+
+            while stack and nums[stack[-1]] < nums[index]:
+                result[stack.pop()] = nums[index]
+
+            if i < n:
+                stack.append(index)
 
         return result
