@@ -31,3 +31,36 @@ class Solution(object):
             return 1 + max(left, right)
 
         return height(root) != -1
+
+
+
+'''
+class Solution(object):
+    def isBalanced(self, root):
+
+        if root is None:
+            return True
+
+        left_depth = self.maxDepth(root.left)
+        right_depth = self.maxDepth(root.right)
+
+        diff = abs(left_depth - right_depth)
+
+        if diff > 1:
+            return False
+
+        return (
+            self.isBalanced(root.left)
+            and self.isBalanced(root.right)
+        )
+
+    def maxDepth(self, root):
+
+        if root is None:
+            return 0
+
+        left = self.maxDepth(root.left)
+        right = self.maxDepth(root.right)
+
+        return 1 + max(left, right)
+'''
