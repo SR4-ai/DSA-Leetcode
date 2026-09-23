@@ -15,7 +15,13 @@ class Solution(object):
             if node is None:
                 return True
 
-            if node.val <= low or node.val >= high:
+            # if node.val <= low or node.val >= high:
+            #     return False
+
+            # Same login but easy to understand
+            if low < node.val < high:
+                pass
+            else:
                 return False
 
             return validate(node.left, low, node.val) and \
